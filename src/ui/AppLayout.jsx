@@ -19,7 +19,7 @@ export default function AppLayout() {
       }}
     >
       <AppShell.Header>
-        <Group h="100%" px="md">
+        <Group h="100%" px="md" wrap="nowrap">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Header />
         </Group>
