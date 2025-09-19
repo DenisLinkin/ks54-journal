@@ -1,0 +1,42 @@
+import { createTheme } from "@mantine/core";
+
+export const theme = createTheme({
+  lightblue: [
+    "#ebf6ff",
+    "#d5e8fa",
+    "#a5d0f7",
+    "#73b7f6",
+    "#4fa2f5",
+    "#3d94f5",
+    "#338ef6",
+    "#287adb",
+    "#1d6dc5",
+    "#005eae",
+  ],
+  blue: [
+    "#ebf1ff",
+    "#d2defa",
+    "#a0b9f7",
+    "#6d93f6",
+    "#4572f5",
+    "#305ef6",
+    "#2654f7",
+    "#1c45dc",
+    "#133dc5",
+    "#002478",
+  ],
+  orange: [
+    "#fff3e2",
+    "#ffe5cc",
+    "#ffca9a",
+    "#ffad64",
+    "#fe9437",
+    "#fe841a",
+    "#ff7700",
+    "#e46900",
+    "#cb5d00",
+    "#b14e00",
+  ],
+  primaryColor: "orange",
+  primaryShade: { light: 6, dark: 8 },
+});
