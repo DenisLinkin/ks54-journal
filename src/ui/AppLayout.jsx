@@ -27,7 +27,12 @@ export default function AppLayout() {
       <AppShell.Navbar p="md">
         <Navbar />
       </AppShell.Navbar>
-      <AppShell.Main>
+      <AppShell.Main
+        style={{
+          height: "calc(100vh - 60px)",
+          overflow: "hidden",
+        }}
+      >
         <Outlet />
       </AppShell.Main>
     </AppShell>
