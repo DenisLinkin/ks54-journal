@@ -9,8 +9,8 @@ import {
   IconLogout,
   IconNumber5,
   IconSettings,
-  IconUser,
   IconUsersGroup,
+  IconSchool,
 } from "@tabler/icons-react";
 import { Stack, Tooltip, UnstyledButton } from "@mantine/core";
 
@@ -36,12 +36,11 @@ function NavbarLink({ icon: Icon, label, active, to, onClick }) {
 const mockdata = [
   { icon: IconHome2, label: "Главная", to: "/home" },
   { icon: IconCalendarTime, label: "Курсы и расписание", to: "/schedule" },
-  { icon: IconNumber5, label: "Экзамены и сессии", to: "/exams" },
+  { icon: IconSchool, label: "Экзамены и сессии", to: "/exams" },
   { icon: IconBook, label: "Журналы и ведомости", to: "/journals" },
   { icon: IconChartBar, label: "Отчёты и аналитика", to: "/report" },
   { icon: IconDoorEnter, label: "Посещаемость", to: "/attendance" },
   { icon: IconUsersGroup, label: "Студенты и преподаватели", to: "/people" },
-  { icon: IconUser, label: "Пользователи и права", to: "/access-rights" },
   { icon: IconSettings, label: "Настройки", to: "/settings" },
 ];
 
@@ -63,7 +62,7 @@ export default function Navbar() {
   return (
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
-        <Stack justify="center" gap={0}>
+        <Stack justify="center" gap={5}>
           {links}
         </Stack>
       </div>
