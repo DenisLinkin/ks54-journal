@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 
-import { useDisclosure } from "@mantine/hooks";
 import { AppShell, Burger, Center, Group } from "@mantine/core";
 import Navbar from "./Navbar";
 import Header from "./Header";
+import { NavbarProvider, useNavbar } from "../context/NavbarContext";
 
 export default function AppLayout() {
-  const [opened, { toggle }] = useDisclosure();
+  const { opened, toggle } = useNavbar();
 
   return (
     <AppShell

@@ -1,14 +1,18 @@
 /* ============================== REACT ROUTER ============================== */
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
+/* ============================== REACT QUERY ============================== */
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 /* ============================== MANTINE ============================== */
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 
-/* ============================== THEME ============================== */
+/* ============================== ЦВЕТОВАЯ ПАЛИТРА ============================== */
 import { theme } from "./styles/theme";
 
-/* ============================== PAGES ============================== */
+/* ============================== СТРАНИЦЫ ============================== */
 import AppLayout from "./ui/AppLayout";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -19,31 +23,47 @@ import Journals from "./pages/Journals";
 import Report from "./pages/Report";
 import Attendance from "./pages/Attendance";
 import People from "./pages/People";
-import AccessRights from "./pages/AccessRights";
 import Settings from "./pages/Settings";
+import { NavbarProvider } from "./context/NavbarContext";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
 
 export default function App() {
   return (
     <MantineProvider theme={theme} defaultColorScheme="auto">
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/exams" element={<Exams />} />
-            <Route path="/journals" element={<Journals />} />
-            <Route path="/report" element={<Report />} />
-            <Route path="/attendance" element={<Attendance />} />
-            <Route path="/people" element={<People />} />
-            <Route path="/access-rights" element={<AccessRights />} />
-            <Route path="/settings" element={<Settings />} />
-          </Route>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <BrowserRouter>
+          <Routes>
+            <Route
+              element={
+                <NavbarProvider>
+                  <AppLayout />
+                </NavbarProvider>
+              }
+            >
+              <Route index element={<Navigate replace to="главная" />} />
+              <Route path="/главная" element={<Home />} />
+              <Route path="/расписание" element={<Schedule />} />
+              <Route path="/экзамены" element={<Exams />} />
+              <Route path="/журналы" element={<Journals />} />
+              <Route path="/отчёты" element={<Report />} />
+              <Route path="/посещения" element={<Attendance />} />
+              <Route path="/люди" element={<People />} />
+              <Route path="/настройки" element={<Settings />} />
+            </Route>
 
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/авторизация" element={<Login />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </MantineProvider>
   );
 }

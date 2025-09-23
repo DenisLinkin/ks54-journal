@@ -1,4 +1,3 @@
-// Header.jsx
 import { useMantineColorScheme, ActionIcon, Group } from "@mantine/core";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 

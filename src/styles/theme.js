@@ -39,4 +39,5 @@ export const theme = createTheme({
   ],
   primaryColor: "orange",
   primaryShade: { light: 6, dark: 8 },
+  defaultRadius: "md",
 });
